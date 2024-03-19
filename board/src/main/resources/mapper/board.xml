@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 해당 파일에 모든 쿼리문을 작성 -->
+<mapper namespace="boardMapper">
+
+    <resultMap id="board" type="com.green.board.vo.BoardVO">
+
+        <result column="BOARD_NUM"      property="boardNum"/>
+        <result column="BOARD_TITLE"    property="boardTitle"/>
+        <result column="BOARD_CONTENT"  property="boardContent"/>
+        <result column="WHITER"         property="whiter"/>
+        <result column="CREATE_DATE"    property="createDate"/>
+        <result column="READ_CNT"       property="readCnt"/>
+    </resultMap>
+
+	<insert id="insertBoard">
+        INSERT INTO BASIC_BOARD(
+            BOARD_NUM
+            , BOARD_TITLE
+            , BOARD_CONTENT
+            , WHITER
+            , CREATE_DATE
+        ) VALUES (
+            #{boardNum}
+            , #{boardTitle}
+            , #{boardContent}
+            , #{whiter}
+            , #{createDate}
+        )
+    </insert>
+
+    <!-- 게시글 목록글 조회 쿼리 -->
+    <select id="selectBoardList" resultMap="board">
+        SELECT BOARD_NUM
+            , BOARD_TITLE
+            , WHITER
+            , CREATE_DATE
+            , READ_CNT
+        FROM BASIC_BOARD
+    </select>
+
+<!--    <select id="selectBoard" resultMap="board">-->
+<!--        SELECT BOARD_NUM-->
+<!--            , BOARD_TITLE-->
+<!--            , WHITER-->
+<!--            , CREATE_DATE-->
+<!--            , BOARD_CONTENT-->
+<!--        FROM BASIC_BOARD-->
+<!--        WHERE BOARD_NUM = #{borderNo}-->
+<!--    </select>-->
+
+    <select id="selectBoard" resultMap="board">
+        SELECT BOARD_NUM
+            , WHITER
+            , CREATE_DATE
+            , BOARD_TITLE
+            , BOARD_CONTENT
+        FROM BASIC_BOARD
+        WHERE BOARD_NUM = #{boardNum}
+    </select>
+
+    <delete id="deleteBoard">
+        DELETE
+        FROM BASIC_BOARD
+        WHERE BOARD_NUM = #{boardNo}
+    </delete>
+
+    <update id="updateBoard">
+        UPDATE BASIC_BOARD
+        SET
+            BOARD_TITLE = #{boardTitle}
+            ,BOARD_CONTENT = #{boardContent}
+        WHERE BOARD_NUM = #{boardNum}
+    </update>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

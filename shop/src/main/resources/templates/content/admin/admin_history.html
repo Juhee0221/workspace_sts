@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" 
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{fragment/admin_layout}">
+
+<th:block layout:fragment="content_css">
+    <!-- html 파일이 열릴때 같이 실행되는 css -->
+    <!-- <link rel="stylesheet" href="css/admin_history.css"> -->
+</th:block>
+
+<th:block layout:fragment="contentFragment">
+    <style>
+        .modal {
+            --bs-modal-width : 650px;
+        }
+    </style>
+    
+    <form action="/admin/history" method="post">
+        <div class="row mb-3">
+            <div class="col-2">
+
+                <!-- 검색기능 -->
+                    <select class="form-select" aria-label="Default select example" name="searchType">
+                        <option value="BUY.BUY_CODE"
+                            th:selected="${searchVO.searchType == null or searchVO.searchType == 'BUY.BUY_CODE'}">구매번호
+                        </option>
+                        <option value="MEMBER_ID" th:selected="${searchVO.searchType == 'MEMBER_ID'}"> 구매자명</option>
+                    </select>
+            </div>
+            <div class="col-10">
+                <input type="text" class="form-control" name="searchValue" th:value="${searchVO.searchValue}">
+            </div>
+        </div>
+        <div class="row mb-5 justify-content-center">
+            <div class="col-2 mt-2" style="text-align: center;">
+                구 매 일 시
+            </div>
+            <div class="col-4">
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping">날짜조회</span>
+                    <input type="date" class="form-control" placeholder="Username" aria-label="Username"
+                        aria-describedby="addon-wrapping" name="fromDate" th:value="${searchVO.fromDate}">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="input-group flex-nowrap">
+                    <input type="date" class="form-control" placeholder="Username" aria-label="Username"
+                        aria-describedby="addon-wrapping" name="searchDate" th:value="${searchVO.searchDate}">
+                </div>
+            </div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-primary"
+                    style="background-color: rgb(198, 228, 228); border: 1px solid rgb(198, 228, 228); width: 160px;">
+                    검색
+                </button>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover "  style="text-align: center;">
+                <colgroup>
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="15%">
+                    <col width="25%">
+                    <col width="*">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <td>NO</td>
+                        <td>구매번호</td>
+                        <td>구매자ID</td>
+                        <td>결제금액</td>
+                        <td>구매일시</td>
+                    </tr>
+                </thead>
+                <tbody th:each="buy, state : ${buyList}">
+                    <tr>
+                        <td>[[${#lists.size(buyList) - state.index}]]</td>
+                        <td>[[${buy.buyCode}]]</td>
+                        <td th:onclick="selectDetail([[${buy.buyCode}]])">[[${buy.memberId}]]</td>
+                        <td>[[${#numbers.formatCurrency(buy.buyPrice)}]]</td>
+                        <td>[[${buy.buyDate}]]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="buy-detail-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">상품 상세 보기♥</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table select_buy">
+                        <colgroup>
+                            <col width="20%">
+                            <col width="18%">
+                            <col width="20%">
+                            <col width="*">
+                        </colgroup>
+                        <tr>
+                            <td>구매번호 |</td>
+                            <td>♥</td>
+                            <td>구매자ID |</td>
+                            <td>♥</td>
+                        </tr>
+                        <tr>
+                            <td>구매금액 |</td>
+                            <td>♥</td>
+                            <td>구매일시 |</td>
+                            <td>♥</td>
+                        </tr>
+                    </table>
+
+                    <table class="table mt-5 select_detail align-middle"> 
+                        <colgroup>
+                            <col width="10%">
+                            <col width="40%">
+                            <col width="10%">
+                            <col width="*">
+                        </colgroup>
+                        <tr>
+                            <td>NO</td>
+                            <td>구매상품</td>
+                            <td>수량</td>
+                            <td>결제금액</td>
+                        </tr>
+                        <tr>
+                            <td>♥1</td>
+                            <td>♥여행</td>
+                            <td>♥2</td>
+                            <td>♥20000</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block layout:fragment="content_js">
+    <!-- html 파일이 열릴때 같이 실행되는 js -->
+    <script src="/js/content/admin/admin_history.js"></script>
+</th:block>
+
+</html>

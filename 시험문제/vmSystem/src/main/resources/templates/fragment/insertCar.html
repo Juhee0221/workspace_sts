@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{fragment/mainPage}" >
+
+<th:block layout:fragment="content_css">
+    <!-- html 파일이 열릴때 같이 실행되는 css -->
+    <link rel="stylesheet" href="css/insertCar.css">
+</th:block>
+
+<th:block layout:fragment="contentFragment">
+    
+    <!-- html 코드 작성 -->
+    <div class="insertCarMain">
+        <form action="/insertCar" method="post" id="insertCarForm">
+            
+            <div class="insertBody">
+                <h2>
+                    차량등록
+                </h2>
+                <div class="insertCarInput">
+                    <span>제조사
+                        <select name="modelMaker" class="select-bar">
+                            <option value="현대">현대</option>
+                            <option value="BMW">BMW</option>
+                            <option value="기아">기아</option>
+                            <option value="르노삼성">르노삼성</option>
+                        </select>
+                    </span>
+                    
+                    <span>
+                        모델명
+                        <input type="text" name="modelName" class="modelName">
+                    </span>
+
+                    <span>
+                        차량가격
+                        <input type="text" name="modelPrice" class="modelPrice">
+                    </span>
+                </div>
+                <div class="insertCarBtn">
+                    <input type="button" value="등록" onclick="goInsertCar()">
+                </div>
+            </div>
+        </form>
+        <div class="insertFooter">
+            <h2>
+                차량목록
+            </h2>
+            <div class="selectTable">
+                <table>
+                    <colgroup>
+                        <col width="25%">
+                        <col width="50%">
+                        <col width="*">
+                    </colgroup>
+                    <thead class="thead">
+                        <tr>  
+                            <td>모델번호</td>
+                            <td>모델명</td>
+                            <td>제조사</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="car , state : ${carList}">
+                            <td>[[${#lists.size(carList) - state.index}]]</td>
+                            <td>[[${car.modelName}]]</td>
+                            <td>[[${car.modelMaker}]]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block layout:fragment="content_js">
+    <!-- html 파일이 열릴때 같이 실행되는 js -->
+    <script src="/js/insertCar.js"></script>
+</th:block>
+</html>

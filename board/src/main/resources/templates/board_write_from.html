@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    .container{
+        width: 600px;
+        margin: 0 auto;
+    }
+    .table{
+        border: 3px solid #fff;
+        width: 100%;
+        height: 150px;
+        border-collapse: collapse ;
+        font-weight: bold;
+    }
+    .t2 {
+        background-color: #a9dcfd;
+        color: #1328e4;
+        font-weight: bold;
+    }
+    tr, td {
+        border: 3px solid #fff;
+        
+    }
+    .t3{
+        background-color: #cde5ee;
+        color: rgb(52, 32, 124);
+    }
+    .t4{
+        background-color: #a9dcfd;
+        color: rgb(52, 32, 124);
+    }
+    .t5{
+        background-color: #cde5ee;
+        color: rgb(52, 32, 124);
+    }
+    .t6{
+        height: 150px;
+        background-color: #a9dcfd;
+        color: rgb(52, 32, 124);
+    }
+    input{
+        width: 300px;
+    }
+    .btn{
+        text-align: center;
+        margin-top: 20px;
+    }
+    .btn > input{
+        width: 85px;
+        height: 50px;
+        margin-top: 25px;
+        border: 1px;
+        border-radius: 45px;
+        background-color: #cde5ee;
+        color: rgb(52, 32, 124);
+    }
+    .btn > input:hover{
+        background-color: #8aaef0;
+        color: white
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <form action="boardWriteFrom" method="post">
+        <table class="table">
+            <tr class="t2">
+                <td>
+                    글번호
+                </td>
+                <td class="t2-1">
+                    <input type="text" name="boardNum">
+                </td>
+            </tr>
+            <tr class="t3">
+                <td>
+                    제목
+                </td>
+                <td>
+                    <input type="text" name="boardTitle">
+                </td>
+            </tr>
+            <tr class="t4">
+                <td>
+                    작성자
+                </td>
+                <td> 
+                    <input type="text" name="whiter">
+                </td>
+            </tr>
+            <tr class="t5">
+                <td>
+                    작성일
+                </td>
+                <td>  
+                    <input type="date" name="createDate">
+                </td>
+            </tr>
+            <tr class="t6">
+                <td>
+                    내용
+                </td>
+                <td>
+                    <textarea name="boardContent"  cols="40" rows="10"></textarea>
+                </td>
+            </tr>
+        </table>
+        <div class="btn">
+            <input type="submit" value="글등록">
+        </div>
+        </form>
+        
+    </div>
+</body>
+</html>

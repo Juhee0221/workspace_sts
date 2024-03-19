@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.container{
+	width: 600px;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<div>
+		<input type="checkbox" id="chk_all" onclick="checkAllMenu();"> 전체선택 / 해제
+	</div>
+	<div>
+		<ol>
+			<li>
+				<input type="checkbox" class="menu" onclick="checkAllOption(this);"> 피자
+				<ul>
+					<li><input type="checkbox">토핑 추가</li>
+					<li><input type="checkbox">치즈크러스트 추가</li>
+					<li><input type="checkbox">콜라 추가</li>
+				</ul>
+			</li>
+			<li>
+				<input type="checkbox" class="menu" onclick="checkAllOption(this);"> 치킨
+				<ul>
+					<li><input type="checkbox">양념 추가</li>
+					<li><input type="checkbox">샐러드 추가</li>
+					<li><input type="checkbox">매운 소스 추가</li>
+				</ul>
+			</li>
+			<li>
+				<input type="checkbox" class="menu" onclick="checkAllOption(this);"> 족발
+				<ul>
+					<li><input type="checkbox">맛보기불족 추가</li>
+					<li><input type="checkbox">보쌈김치 추가</li>
+					<li><input type="checkbox">막국수 추가</li>
+				</ul>
+			</li>
+		</ol>
+	</div>
+</div>
+
+<script type="text/javascript" src="test3.js"></script>
+</body>
+</html>

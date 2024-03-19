@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 해당 파일에 모든 쿼리문을 작성 -->
+<mapper namespace="boardMapper">
+    <resultMap id="board" type="com.green.Board2.VO.BoardVO">
+        <result column="BOARD_NUM"      property="boardNum"/>
+        <result column="TITLE"          property="title"/>
+        <result column="CONTENT"        property="content"/>
+        <result column="WRITER"         property="writer"/>
+        <result column="CREATE_DATE"    property="createDate"/>
+        <result column="READ_CNT"       property="readCnt"/>
+    </resultMap>
+
+    <!-- insert -->
+    <insert id="insertBoard">
+        INSERT INTO BOARD (
+            TITLE
+            , WRITER
+            , CONTENT
+        ) VALUES (
+            #{title}
+            , #{writer}
+            , #{content}
+        )
+    </insert>
+
+    <!-- select -->
+    <select id="selectBoard" resultMap="board">
+        SELECT BOARD_NUM
+        , TITLE
+        , WRITER
+        , CREATE_DATE
+        , READ_CNT
+        FROM BOARD
+
+        <!-- if문의 조건이 '참' 일때만 실행-->
+        <!-- searchVO.getSearchValue(); 호출. 하는것 -->
+        <!-- # => 빈값을 채울때 ''가 붙음-->
+        <!-- $ => 빈값을 채울때 ''가 붙지 않음.-->
+        <!-- 컬럼의 값을 넣어줘야 될때는 #을 넣어도 무방하지만-->
+        <!-- 컬럼명 자체를 가지고 와야 될때는 ''가 붙지 않게 $을 써줘야된다.-->
+
+        <if test='searchValue != null and !searchValue.equals("")'>
+            WHERE ${searchType} LIKE CONCAT('%', #{searchValue}, '%')
+        </if>
+        ORDER BY BOARD_NUM DESC
+        <!--searchVO.getDisplayCnt-->
+        LIMIT ${displayDateCnt} OFFSET ${displayDateCnt * (nowPage-1)}
+    </select>
+
+    <!-- select All -->
+    <select id="selectBoardAll" resultMap="board">
+        SELECT BOARD_NUM
+          , TITLE
+          , WRITER
+          , CREATE_DATE
+          , CONTENT
+        FROM BOARD
+        WHERE BOARD_NUM = #{boardNum}
+    </select>
+
+    <!-- 게시글 삭제-->
+    <delete id="deleteBoard">
+        DELETE
+        FROM BOARD
+        WHERE BOARD_NUM = #{boardNum}
+    </delete>
+
+    <!-- 게시글 수정 -->
+    <update id="updateBoard">
+        UPDATE BOARD
+        SET
+            TITLE = #{title}
+            , CONTENT = #{content}
+        WHERE BOARD_NUM = #{boardNum}
+    </update>
+
+    <!-- 조회수 증가 -->
+    <update id="updateReadCnt">
+        UPDATE BOARD
+        SET
+            READ_CNT = READ_CNT + 1
+        WHERE BOARD_NUM = #{boardNum}
+    </update>
+
+    <select id="selectBoardCnt" resultType="int">
+        SELECT
+        COUNT (
+            BOARD_NUM
+        )
+        FROM BOARD
+    </select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

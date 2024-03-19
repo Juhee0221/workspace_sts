@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 해당 파일에 모든 쿼리문을 작성 -->
+
+<mapper namespace="memberMapper">
+    <resultMap id="member" type="com.green.Board2.VO.MemberVO">
+        <id column="MEMBER_ID"          property="memberId"/>
+        <result column="MEMBER_PW"      property="memberPw"/>
+        <result column="MEMBER_NAME"    property="memberName"/>
+        <result column="GENDER"         property="gender"/>
+        <result column="MEMBER_EMAIL"   property="memberEmail"/>
+        <result column="IS_ADMIN"       property="isAdmin"/>
+
+    </resultMap>
+
+    <!-- insert -->
+    <insert id="insertMember">
+        INSERT INTO BOARD_MEMBER (
+            MEMBER_ID
+            , MEMBER_PW
+            , MEMBER_NAME
+            , GENDER
+            , MEMBER_EMAIL
+
+        ) VALUES (
+            #{memberId}
+            , #{memberPw}
+            , #{memberName}
+            , #{gender}
+            , #{memberEmail}
+        )
+    </insert>
+    <select id="login" resultMap="member">
+        <!-- 어떤 컬럼을 조회하든 상관이 없음.-->
+        <!-- 입력한 데이터가 들어가있는 데이터와 맞으면 조회가능 -->
+        <!-- WHERE절에 있는 것이 중요-->
+        SELECT MEMBER_ID
+            , MEMBER_NAME
+            , IS_ADMIN
+        FROM BOARD_MEMBER
+        WHERE MEMBER_ID = #{memberId}
+        AND MEMBER_PW = #{memberPw}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+   .wrap{
+    margin: 0 auto;
+    width: 600px;
+    height: 500px;
+    border: 2px solid black;
+    text-align: center;
+   }
+   .id{
+        margin-top: 30px;
+   }
+   .name{
+        margin-top: 10px;
+   }
+   .tel{
+        margin-top: 10px;
+   }
+
+</style>
+</head>
+<body>
+    <div class="wrap">
+        <h2>
+            회원정보를 입력해주세요
+        </h2>
+        <form action="goDetail" method="post">
+            <div class="id">
+                아이디  <input type="text" name="id"><br>
+                비밀번호  <input type="password" name="pw"><br>
+            </div>    
+            <div class="name">
+                <h4 class="h4">이름을 입력하세요</h4>
+                이름  <input type="text" name="name"><br>
+            </div>
+            <div class="tel">
+                연락처  <select name="tel"><br>
+                            <option value="010">010</option>
+                            <option value="011">011</option>
+                            <option value="012">012</option>
+                        </select>
+                        <input type="text" name="tel">
+                        <input type="text" name="tel"><br> 
+            </div>           
+                이메일 <input type="email" name="email"><br>        
+                생일   <input type="date" name="birthday"> <br>  
+            </div>
+            <div>
+                <input type="submit" value="회원가입">
+            </div>
+        </form>
+    </div>    
+</body>
+</html>

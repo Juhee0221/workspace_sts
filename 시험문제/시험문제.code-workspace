@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../workspace_html_css"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "시험문제"
+	}
+}

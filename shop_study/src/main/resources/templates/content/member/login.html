@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{fragment/user_layout}" >
+
+<th:block layout:fragment="content_css">
+  <link rel="stylesheet" href="css/login.css">
+  <!-- html 파일이 열릴때 같이 실행되는 css -->
+</th:block>
+
+ <th:block layout:fragment="contentFragment">
+    <div class="row justify-content-center">
+      <div class="col-3" style=" margin-bottom: 20px; text-align: center; background-color: #c8daeb;">
+        로그인
+      </div>
+    </div>
+
+    <form action="/member/login" method="post" id="login-form">
+      <!-- ID -->
+      <div class="row mb-3 justify-content-center">
+        <label for="memberId" class="col-sm-2 col-form-label">ID</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="memberId" name="memberId">
+        </div>
+      </div>
+
+      <!-- password -->
+      <div class="row mb-3 justify-content-center">
+        <label for="memberPw" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-3">
+          <input type="password" class="form-control" id="memberPw" name="memberPw">
+        </div>
+      </div>
+
+        <div class="row mb-3">
+          <div class="col-sm-10 " style="text-align: center; margin-left:70px;">
+            <button type="submit" class="btn btn-primary">LOGIN</button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-sm-10 " style="text-align: center; margin-left:70px;">
+            <button type="button" class="btn btn-primary" onclick="login()">비동기로그인</button>
+          </div>
+        </div>
+
+    </form>
+    <!-- html 코드작성 -->
+</th:block>
+
+<th:block layout:fragment="content_js">
+  <!-- html 파일이 열릴때 같이 실행되는 js -->
+ <script src="/js/content/member/login.js"></script>
+</th:block>
+</html>

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../workspace_sts/shop/src/main/resources"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "img"
+	}
+}

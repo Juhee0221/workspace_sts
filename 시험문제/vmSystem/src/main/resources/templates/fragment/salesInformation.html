@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{fragment/mainPage}" >
+
+<th:block layout:fragment="content_css">
+    <!-- html 파일이 열릴때 같이 실행되는 css -->
+    <link rel="stylesheet" href="/css/salesInformation.css">
+</th:block>
+
+<th:block layout:fragment="contentFragment">
+    <!-- html 코드 작성 -->
+    <div class="information-box">
+        <h3>판매 정보</h3>
+        <div class="information-header">
+            <form action="/salesSelectCar" method="post" id="salesInsert">
+                <table>
+                    <tr>
+                        <td class="table-text">구매자</td>
+                        <td colspan="3">
+                            <input type="text" style="width: 200px; height: 25px;" name="modelBuyer" id="modelBuyer">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-text">색상</td>
+                        <td>
+                            <select name="modelColor" style="width: 204.5px; height: 25px; margin-right: 30px;">
+                                <option value="블랙">블랙</option>
+                                <option value="화이트">화이트</option>
+                                <option value="블루">블루</option>
+                                <option value="레드">레드</option>
+                            </select>
+                        </td>
+                        <td class="table-text" style="margin-left: 25px; width: 100px;">
+                            모델명
+                        </td>
+                        <td>
+                            <select name="modelCode"  style="width: 204.5px; height: 25px;" >
+                                <th:block th:each="maker : ${makerList}">
+                                     <option th:value="${maker.modelCode}">
+                                        [[${maker.modelName}]]
+                                    </option>
+                                </th:block>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-text">연락처</td>
+                        <td><input type="text" style="width: 200px; height: 25px;" name="buyerTel"></td>
+                    </tr>
+                </table>
+
+                <div class="table-btn">
+                    <input type="button" value="등록" onclick="goInsert()">
+                </div>
+            </form>
+        </div>
+    </div>    
+</th:block>
+
+<th:block layout:fragment="content_js">
+    <!-- html 파일이 열릴때 같이 실행되는 js -->
+    <script src="/js/salesInformation.js"></script>
+</th:block>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    .container{
+        margin: 0 auto;
+        width: 600px;
+        height: 100vh;
+        background-color: rgba(228, 238, 181, 0.2);
+        text-align: center;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .table{
+        width: 100%;
+        
+    }
+    .logo{
+            font-size: 30px;
+            margin-bottom: 120px;
+    }
+    .t1{
+        font-weight: bold;
+        color: #276e11;
+        height: 80px;
+        background-color: rgba(254, 255, 217, 0.5);
+    }
+    .t2{
+        height: 70px;
+        color: #103505;
+    }
+    .t3{
+        color: #103505;
+    }
+    .btn2 >input{
+        border: 1px ;
+        width: 120px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: #bff070;
+    }
+    .btn2 > input:hover{
+        background-color: #51ee21;
+        color: rgb(255, 255, 255);
+    }
+    .btn >input{
+        border: 1px ;
+        width: 120px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: #bff070;
+    }
+    .btn > input:hover{
+        background-color: #51ee21;
+        color: rgb(255, 255, 255);
+    }
+    a{
+        text-decoration: none;
+        color: #103505;
+    }
+    .tex > tr > td{
+        font-size: 30px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+       <th:block th:if="${session.loginInfo != null}">
+            [[${session.loginInfo.memberName}]]님 반갑습니다
+            <a href="/member/logout">LOGOUT</a>
+       </th:block>
+       <th:block th:if="${session.loginInfo == null}">
+            <a href="/member/loginForm"></a>
+       </th:block>
+       <form action="/board/list" method="post">
+        <select name="searchType">
+            
+            <!-- 이전 list.html에서 제목을 선택했다면 -->
+            <!-- 새로 열리는 list.html에서는 제목이 선택되어있어야함 -->
+            <!-- 이전 list.html에서 작성자를 선택했다면 -->
+            <!-- 새로 열리는 list.html에서는 작성자가 선택되어있어야함 -->
+            <!-- th:selected는 if문과 같이 '참'이면 selected가 붙고 '거짓'이면 selected가 안붙음 -->
+            <!-- (커맨드객체).(속성 속 상위박스) == '(value값)' 일때 selected실행 -->
+            <!-- selected값이 맞아떨어지지 않을때는 맨위에 있는 박스가 자동으로 html에 표시됨 -->
+            
+            <option value="TITLE" th:selected="${searchVO.searchType == null or searchVO.searchType == 'TITLE'}">제목</option>
+            <option value="WRITER" th:selected="${searchVO.searchType == 'WRITER'}">작성자</option>
+        </select>
+
+        <!-- 검색창에 검색한 단어를 그대로 뜨게 하고 싶으면 th:value 값을 넣어주기. -->
+        <input type="text" name="searchValue" th:value="${searchVO.searchValue}">
+        <input type="submit" value="검색">
+        </form>
+        <table class="table">
+            <tr class="t1">
+                <td>글번호</td>
+                <td>제목</td>
+                <td>작성자</td>
+                <td>작성일</td>
+                <td>조회수</td>
+            </tr>
+            <th:block th:if="${#lists.isEmpty(boardList)}">
+                <tr class="t3">
+                    <td colspan="5">
+                        조회된 게시글이 없습니다.
+                    </td>
+                </tr>
+            </th:block>
+            <th:block th:unless="${#lists.isEmpty(boardList)}">
+                <tr th:each="board : ${boardList}" class="t2">
+                    <td>[[${board.boardNum}]]</td>
+                    <td>
+                        <a th:href="@{/board/select(boardNum=${board.boardNum})}">[[${board.title}]]</a>
+                    </td>
+                    <td>[[${board.writer}]]</td>
+                    <td>[[${board.createDate}]]</td>
+                    <td>[[${board.readCnt}]]</td>
+                </tr>
+            </th:block>
+        </table>
+           <!--  페이징 코드  -->
+        <div>
+            <th:block th:if="${searchVO.prev}">
+                <a th:href="@{/board/list(nowPage=${searchVO.beginPage - 1})}">이전</a>
+            </th:block>
+            <th:block th:each="i :${#numbers.sequence(searchVO.beginPage, searchVO.endPage)}">     th:each="i :${#numbers.sequence(1, 10)}"
+                <a th:href="@{/board/list(nowPage=${i})}">[[${i}]]</a>
+            </th:block>
+            <th:block th:if="${searchVO.next}">
+                <a th:href="@{/board/list(nowPage=${searchVO.endPage + 1})}">다음</a>
+            </th:block>
+        </div>  
+    
+        <th:block th:if="${session.loginInfo != null}">
+            <div class="btn">
+                <input type="button" value="글쓰기" onclick="goWriting()">
+            </div>
+        </th:block>
+        <th:block th:if="${session.loginInfo == null}">
+            <div class="btn2">
+                <input type="button" value="뒤로가기" onclick="history.back()">
+            </div>
+        </th:block>  
+    </div>
+
+    <Script>
+        function goWriting(){
+            location.href="/board/write"
+        }
+    </Script>
+</body>
+</html>

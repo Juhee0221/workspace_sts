@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트</title>
+</head>
+<body>
+
+    <input type="text" id="num1">
+    <input type="password" class="num2">
+    <input type="checkbox" value="1" class="num3">
+    <input type="checkbox" value="2" class="num3">
+    <input type="checkbox" value="3" class="num3">
+    <input type="button" value="버튼" onclick="showData()">
+
+    <script>
+        //alert(111);
+
+        //태그 선택하기(접근하기)
+        //1. 아이디 속성이 num1인 태그를 선택
+        //자바스크립트는 변수에 '함수'도 들어갈 수 있다.
+        const tag1 = document.querySelector('#num1');
+
+        console.log(tag1);
+
+        //2. class 속성이 num2인 태그를 선택
+        const tag2 = document.querySelector('.num2');
+        
+        console.log(tag2);
+
+        //3. class 속성이 num3인 태그를 선택
+        // 같은 class 속성을 가진 태그가 여러개라면 가장 처음 선언된
+        // 태그만 선택함
+        const tag3 = document.querySelector('.num3');
+        console.log(tag3);
+
+        //4. calss 속성이 num3인 태그 모두를 선택
+        //자바와 같이 순번은 '0'부터 시작.
+        const tag4 = document.querySelectorAll('.num3');
+        console.log(tag4);
+
+        //0번째에 저장된 태그 출력
+        //클래스명이 다 같을 경우 원하는 순번만 출력하고 싶을때는 
+        //console.log(클래스명[원하는 데이터 순번]);
+
+        console.log(tag4[0]);
+
+        //태그 4의 전체 데이터 출력
+        //for문 사용해서 출력
+        //자료형만 int 에서 let으로 변경.
+        for(let i = 0; i< tag4.length; i++){
+
+            console.log(tag4[i]);
+        }
+
+        // for.each문에서 ' : ' 대신 of를 넣어주면됨
+        for(const e of tag4){
+            console.log(e);
+        }
+        //dom객체(태그) 컨트롤
+        function showData(){
+        }
+
+    
+    </script>
+
+</body>
+</html>

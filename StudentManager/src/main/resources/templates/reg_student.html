@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .d1{
+            margin: 0 auto;
+            text-align: center;
+            width: 400px;
+            height: 600px;
+            background-color: #e3eaf3;
+        }
+        h2 {
+            padding: 40px 20px;
+        } 
+        .text{
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .text2{
+            margin-top: 40px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .inp{
+            margin-top: 80px;
+        }
+        .inp > input{
+            background-color: #8dcfee;
+            border: 1px;
+            border-radius: 20px;
+            width: 90px;
+            height: 40px;
+            color: rgb(6, 6, 48);
+            font-weight: bold;
+        }
+        .d2{
+            margin-top: 20px;
+        }
+        textarea{
+            align-items: center;
+            resize: none;
+            border: 2px solid rgb(204, 204, 240);
+        }
+        input{
+            border: 2px solid rgb(204, 204, 240);
+        }
+    </style>
+</head>
+<body>
+    <div class="d1">
+        <h2>
+            학생등록
+        </h2>
+
+        <form action="regStu" method="post">
+            <div class="text">
+                '학번'과 '이름'을 입력하세요.
+            </div>
+            <div>
+                학번
+                <input type="text" name="stuNo">
+            </div>
+            <div>
+                이름
+                <input type="text" name="stuName">
+            </div>
+            <div class="text2">
+                '각 과목 점수'를 입력하세요.
+            </div>
+            <div class="korScore">
+                국어점수
+                <input type="text" name="korScore">
+            </div>
+            <div>
+                영어점수
+                <input type="text" name="engScore">
+            </div>
+            <div class="d2">
+                학생소개
+                <textarea name="intro" cols="30" rows="4"></textarea>
+            </div>
+            <div class="inp">
+                <input type="submit" value="등록완료">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

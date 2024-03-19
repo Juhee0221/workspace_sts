@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    .container{
+        margin: 0 auto;
+        width: 600px;
+        height: 700px;
+        background-color: rgba(228, 238, 181, 0.2);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .logo{
+        font-size: 30px;
+    }
+    .table{
+        width: 100%;
+    }
+    .t1{
+        font-weight: bold;
+        color: #276e11;
+        height: 80px;
+    }
+    .in1{
+        width: 200px;
+    }
+    .in2{
+        width: 200px;
+    }
+    .btn{
+        margin-top: 180px;
+    }
+    .btn >input{
+        border: 1px ;
+        width: 120px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: #bff070;
+    }
+    .btn > input:hover{
+        background-color: #51ee21;
+        color: rgb(255, 255, 255);
+    }
+    a{
+        text-decoration: none;
+        color: #103505;
+    }
+    textarea{
+        resize: none;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <form action="/board/write" method="post">
+            <table class="table">
+                <header class="logo">
+                    <h3>WRITE</h3>
+                </header>
+                <tr class="t1">
+                    <td>제목</td>
+                    <td>
+                        <input type="text" name="title" class="in1">
+                    </td>
+                </tr>
+                <tr class="t1">
+                    <td>내용</td>
+                    <td>
+                        <textarea name="content"  cols="35" rows="10">
+                        </textarea>
+                    </td>
+                </tr>
+            </table>
+            <div class="btn">
+                <input type="submit" value="글쓰기">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트04</title>
+</head>
+<body>
+    <table id="my-Table">
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>
+                    <input type="text" value="1">
+                </td>
+            </tr>
+            <tr id="my-tr">
+                <td>2</td>
+                <td>
+                    <input type="text" value="2">
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>
+                    <input type="text" value="3">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        //id 속성이 my-Table인 태그의 자식태그 선택 
+        const tableTag= document.querySelector('#my-Table');
+
+        //자식 태그 접근 
+        console.log(tableTag.children); 
+        console.log(tableTag.children[0]);
+
+        //테이블 태그의 자식의 자식태그 선택
+        console.log(tableTag.children[0].children);
+
+        //부모 태그에 접근 
+        const trTag = document.querySelector('#my-tr')
+        console.log(trTag.parentElement.parentElement);
+    </script>
+
+</body>
+</html>

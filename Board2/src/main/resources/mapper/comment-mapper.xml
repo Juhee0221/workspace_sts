@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 해당 파일에 모든 쿼리문을 작성 -->
+<mapper namespace="CommentMapper">
+
+    <resultMap id="comment" type="com.green.Board2.VO.CommentVO">
+        <result column="COMMENT_WRITER" property="commentWriter"/>
+        <result column="CONTENT"        property="content"/>
+        <result column="CREATE_DATE"    property="createDate"/>
+        <result column="COMMENT_NUM"    property="commentNum"/>
+    </resultMap>
+
+   <insert id="insertComment">
+       INSERT INTO COMMENT (
+            COMMENT_NUM
+          , COMMENT_WRITER
+          , CONTENT
+          , BOARD_NUM
+       ) VALUES (
+            #{commentNum}
+           , #{commentWriter}
+           , #{content}
+           , #{boardNum}
+       )
+   </insert>
+
+    <!--//댓글 조회-->
+    <select id="selectComment" resultMap="comment">
+        SELECT COMMENT_WRITER
+            , CONTENT
+            , CREATE_DATE
+        FROM COMMENT
+        WHERE BOARD_NUM = #{boardNum}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

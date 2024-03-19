@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!--  layout:dacorate => 이 파일은 fragment 폴더 안의 layout.html과 함께 열리는것이라고 알려주는것 -->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layot= "http://www.ultrag.net.nz/thymeleaf/layout"
+                layout:decorate="~{fragment/layout}">              
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+    <!-- 화면이 계속 바뀌니깐 layout:fragment를 사용 -->
+    <th:block layout:fragment="contentFragment">
+        <h3>content_1.html 파일입니다.</h3>
+        <a href="/content2">content_2.html 파일로 이동</a>
+    </th:block>
+</body>
+</html>

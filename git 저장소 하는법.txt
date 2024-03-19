@@ -1,0 +1,95 @@
+git 설치 후 최초 딱 한번만 실행하는 명령어 (pc마다 한번씩)
+
+깃 토큰 : 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
+
+1. 컴퓨터의 깃 사용자를 지정 (이메일 , 이름)
+# 현재 pc에 세팅된 git email(name) 정보확인 
+   git config --global user.email(name)
+
+# pc에 git email(name) 정보 등록 및 변경 
+   git config --global user.email(name)
+
+최초 파일을 깃 허브에 올리는 방법
+ 1. 깃 허브 사이트에 로그인해서 원격저장소(remote repository) 생성
+ 2. 깃 허브 사이트에 올릴 파일이 있는 
+
+현재 폴더를 깃과 연결시켜주는 명령어를 실행
+   git init 
+
+위에 명령어를 실행하면 폴더에 .git이라는 숨김폴더가 생성
+
+4. git branch -M main
+ 
+5. 1번에서 만든 원격저장소와 3번에서 만든 지역저장소를 연결
+  	git remote add origin 원격저장소 url
+
+6. 지역저장소에서 원격저장소로 올릴 파일을 스테이징 한다.
+       git add 올릴파일명
+       git add . -> 지역저장소에 있는 모든 파일을 스테이징.
+
+7. 스테이징한 파일들을 원격 저장소로 올림
+  7-1 커밋(Commit) : 되돌아갈수있는 gi복원 시점을 생성
+       git commit -m "커밋 메세지"
+
+  7-2 푸쉬(Push) : 원격 저장소에 파일을 전송
+        git push origin main(브렌치명)
+
+git status - 지역저장소 확인
+
+8. 위의 과정을 통해 파일을 처음 원격저장소에 올렸다면 
+   수정 후 내용을 다시 올리기 위해서는 6번부터 7번까지의 과정을 반복
+
+9. 수정한 내용을 계속 git에 올릴때는 6~7번 반복ge 
+
+git에 올린 파일을 다른 pc에서 내려받기 
+
+1. git에 있는 파일을 내려받을 폴더를 결정
+
+2. 내려받을 폴더에서 깃배쉬를 실행 
+
+3. 원격저장소에 있는 내용을 복사해 온다.
+   git clone 원격저장소 url 
+        - 원격 저장소 안의 내용만 가지고 오는게 아닌 원격저장소 자체를 가지고 온다.
+내려받을때 파일 자체를 가지고 옴
+
+두 pc가 git과 연결된 상태에서의 작업
+작업을 하기전에 반드시! 내려받을 파일을 먼저 내려받는다.
+1.git pull origin main (브렌치명) - 파일 내려받기.
+내려 받았으면 파일을 수정 후 다시 깃허브에 올린다
+2. git add . 
+   git commit -m "커밋메세지"
+   git push origin main(브렌치명) 
+
+git config --global core.autocrlf true : warning 발생시 사용.
+
+git branch - 현재 branch 위치를 알 수 있음
+
+git checkout (branch명) - 원하는 브렌치로 변경
+
+-- 다른 브렌치의 내용을 병합하는 방법(반드시 병합하고자 하는 브렌치에서 실현)
+git merge 병합할 브렌치명
+
+팀원들이 팀장이 원격저장소에 올린 파일 dev브렌치만 가져온다
+git clone -b 브렌치명 원격저장소 url
+
+모든 팀원들(팀장 포함)은 본인이 작업할 개인 브렌치를 생성 
+git branch 브렌치명
+
+9. 새로 생성한 브렌치로 이동해서 코드작성
+git checkout 브렌치명 
+
+10. 개인 브렌치에서 작업한 내용은 dev브렌치에 병합
+     병합 명렁어는 반드시 dev브렌치에서 병합git 
+	git checkout dev
+	git merge 병합할 브렌치명 
+11. dev 브렌치의 내용을 올린다.
+	git pull origin dev
+	git add.
+	git commit -m 커밋메세지
+	git push origin dev
+	git pull origin dev
+12. 다음 코드 구현을 위해 개인브렌치에 dev브렌치를 병합
+	git checkout 개인브렌치
+	git merge dev
+
+9~12번 내용을 반복

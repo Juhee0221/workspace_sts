@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="/stu_manage.css">
+</head>
+<body>
+    <div id="wrap">
+        <div class="content">
+            <!-- <select class="select" onchange="goSelect()"> -->
+            <select class="select" onchange="fetchSelect()">
+                <option value="0" th:selercted="${stuVO.classCode == 0}">전체</option>
+                <option th:value="${class.classCode}" th:each="class : ${class}"
+                        th:selected="${stuVO.classCode == class.classCode}">
+                    [[${class.className}]]
+                </option>
+            </select>
+            <table id="table">
+                <thead>
+                    <tr class="tr1">
+                        <td>NO</td>
+                        <td>반이름</td>
+                        <td>학번</td>
+                        <td>이름</td>
+                    </tr>
+                </thead>
+                <tbody class="tr2">
+                    <tr th:each="stu1, state : ${stu}">
+                        <td>[[${#lists.size(stu) - state.index}]]</td>
+                        <td>[[${stu1.className}]]</td>
+                        <td>[[${stu1.stuNum}]]</td>
+                        <td>
+                            <span th:onclick="goDetail([[${stu1.stuNum}]])">
+                                [[${stu1.stuName}]]
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+           
+        </div>
+    </div>
+    
+    
+    <script src="stu_manage.js"></script>
+</body>
+</html>

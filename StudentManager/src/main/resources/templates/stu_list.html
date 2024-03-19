@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    .container{
+        width: 600px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    table{
+        border: 1px solid black;
+        width: 100%;
+        border-collapse: collapse ;
+        color: #fff;
+        font-weight: bold;
+    }
+    tr, td{
+        border: 3px solid white;
+    }
+    .t1 {
+        height: 40px;
+        font-size: 16px;
+        background-color: #014496;
+    }
+    .btn{
+        margin-top: 50px;
+    }
+    .t2{
+        background-color: #6698d4;
+    }
+    .btn > input{
+        background-color: #004faf;
+        border: 1px solid white;
+        width: 80px;
+        height: 45px;
+        border-radius: 50px;
+        color: #fff;
+        font-weight: bold;
+    }
+    a{
+        text-decoration: none;
+        color: #fff;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <tr class="t1">
+                <td>학번</td>
+                <td>학생명</td>
+                <td>국어점수</td>
+                <td>영어점수</td>
+                <td>총점</td>
+            </tr>
+
+            <th:block th:each=" student : ${stuList}">
+                <tr class="t2">
+                    <td>[[${student.stuNo}]]</td>
+                    <td>
+                        <a th:href="@{stuDetail(stuNo=${student.stuNo})}" >
+                            [[${student.stuName}]]
+                        </a>
+                    </td>
+                    <td>[[${student.korScore}]]</td>
+                    <td>[[${student.engScore}]]</td>
+                    <td>[[${student.korScore + student.engScore}]]</td>
+                </tr>
+            </th:block>
+        </table>
+        <div class="btn">
+            <input type="button" value="학생등록" onclick="goReg()">
+        </div>
+    </div>
+
+
+    <script>
+        function goReg(){
+            location.href = 'regStu';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" class="num1"> + <input type="text" class="num2"> = 
+    <input type="text" class="num3"> <br>
+    <input type="button" value="더하기" onclick="goAll()">    
+
+    <script>
+        
+
+        function goAll(){
+            const tag1 = document.querySelector('.num1').value;
+            const tag2 = document.querySelector('.num2').value;
+
+            const result = parseInt(tag1) + parseInt(tag2);
+
+           document.querySelector('.num3').value = result;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>파일 업로드 테스트</h2>
+    <!-- 파일 업로드 시 input 타입을 file로 변경 -->
+    <!-- 첨부한 파일을 가져가고 싶으면 form태그를 사용 -->
+    <!-- form태그에 enctype 사용 : enctype="multipart/form-data" -->
+    <!--  enctype="multipart/form-data"을 사용하지 않으면 input태그 속 내용은 문자로 전송-->
+    <!--  enctype="multipart/form-data"을 사용하면 인식할 수 있는 내용으로 전송-->
+    <form action="/file/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="img1"> <br>
+        <input type="file" name="img2"> <br>
+        <input type="submit" value="업로드">
+    </form>
+    
+</body>
+</html>

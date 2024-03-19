@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트</title>
+    <style>
+        ul{
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+    </div>
+    <input type="button" value="버튼" id="btn"><br>
+    <input type="text" class="btn">
+
+   
+</body>
+    <script>
+        //이벤트처리
+        const btn = document.querySelector('#btn')
+        //이벤트를 
+        btn.addEventListener('click', function test(){
+            alert(111);
+        });
+
+        //input 태그에 키보드로 값을 입력할 때마다 
+        //입력한 값을 console에 출력 시키는 이벤트 코드를 작성.
+
+        const btn1 = document.querySelector('.btn')
+
+        btn1.addEventListener('keyup', function test(){
+            console.log(btn1.value);
+        })
+    </script>
+
+</html>

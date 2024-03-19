@@ -1,0 +1,90 @@
+#wrap{
+    width: 1200PX;
+    display: flex;
+    margin: 0 auto;
+}
+.content{
+    width: 600px;
+    height: 800px;
+    background-color: rgba(209, 226, 207, 0.2);
+    text-align: center;
+}
+.container{
+    width: 600px;
+    height: 800px;
+    background-color: rgba(209, 226, 207, 0.2);
+    text-align: center;
+}
+.select{
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+    border: 1px;
+    border-radius: 10px;
+    background-color: rgb(173, 231, 167);
+    font-weight: bold;
+    text-align: center;
+    color: #011b0e;
+}
+#table{
+    width: 550px;
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+    border-collapse: collapse;
+}
+.tr1{
+    width: 100%;
+    height: 50px;
+    background-color: rgb(173, 231, 167);
+    color: #023524cb;
+    font-weight: bold;
+    border: 2px solid #fff;
+}
+.tr1 > td{
+    border: 2px solid #02351713;
+}
+.tr1> td:hover{
+    background-color: rgb(152, 231, 141);
+}
+.tr2{
+    width: 100%;
+    background-color: rgba(173, 231, 167, 0.2);
+    font-size: 15.5px;
+    color: #0f7553a2;
+}
+.tr2 > tr{
+    border: 2px solid #35230213;
+}
+.tr2 > tr > td {
+    border: 2px solid #35230213;
+}
+.tr2 > tr > td:hover{
+    background-color: rgba(173, 231, 167, 0.5);
+}
+.stu-detail{
+    margin-top: 20px;
+}
+.stu_score{
+    margin-top: 50px;
+}
+.text{
+    font-size: 20px;
+    color: #023524cb;
+    font-weight: bold;
+}
+span{
+    cursor: pointer;
+}
+.tbody > .tr2 > td > input{
+    width: 40px;
+}
+.stu_score > .btn > input{
+    width: 100px;
+    height: 30px;
+    margin-top: 40px;
+    background-color: rgb(173, 231, 167);
+    border: 1px;
+    border-radius: 25px;
+    font-weight: bold;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+    <div>
+        [[${name}]]
+        [[${tel}]]
+        <form action="/resume3" method="post">
+            <div>
+                학력
+                <select name="clas">
+                    <option value="대졸">대졸</option>
+                    <option value="대학졸업예정">대학졸업예정</option>
+                    <option value="전문대졸">전문대졸</option>
+                    <option value="고졸">고졸</option>
+                </select>
+                <input type="text" name="school">
+            </div>
+            <div>
+                지원구분
+                <input type="radio" name="career" value="신입" checked>신입
+                <input type="radio" name="career" value="경력">경력
+            </div>
+
+            <div>
+                <h3>자격정보</h3>
+                <table>
+                    <tr>
+                        <td>자격증명</td>
+                        <td>취득일자</td>
+                        <td>발행기관</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="proof"></td>
+                        <td><input type="date" name="date"></td>
+                        <td><input type="text" name="com"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <h3>경력정보</h3>
+                <table>
+                    <tr>
+                        <td>회사명</td>
+                        <td>담당업무</td>
+                        <td>경력기관</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="company"></td>
+                        <td><input type="text" name="work"></td>
+                        <td><input type="text" name="workyear">년 
+                            <input type="text" name="workmonth">개월 
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <h3>자기소개</h3>
+                <textarea name="info"cols="30" rows="10"></textarea>
+            </div>
+
+            <div>
+                <input type="submit" value="등록">
+            </div>
+            <!-- <input type="hidden" name="name" th:value="${resumeVo.name}">
+            <input type="hidden" name="tel" th:value="${resumeVo.tel}"> -->
+            <input type="hidden" name="name" th:value="${name}">
+            <input type="hidden" name="tel" th:value="${tel}">
+        </form>
+    </div>
+</body>
+</html>

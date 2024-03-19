@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{fragment/user_layout}" >
+
+<th:block layout:fragment="content_css">
+    <!-- html 파일이 열릴때 같이 실행되는 css -->
+    <!-- <link rel="stylesheet" href="/"> -->
+</th:block>
+
+<th:block layout:fragment="contentFragment">
+    <!-- html 코드 작성 -->
+    <div>
+        <form action="/buy/insertProductBuy" method="post">
+            <div th:each="img:${item.imgList}">
+                <th:block th:if="${img.isMain == 'Y'}">
+                        <div class="row">
+                            <div class="col-sm-3 col-sm-push-7" style="margin: 0 auto; align-items: center;">
+                                <img th:src="@{'/upload/'+ ${img.attachedFileName}}"
+                                style=" width: 300px; height: 350px; margin-right: 0;">
+                            </div>
+                            <div class="col-6">
+                                <div style="font-size: 35px;">
+                                    [[${item.itemName}]]
+                                </div> 
+                                <div style="margin-top: 15px;">
+                                    <span>
+                                        판매가 :
+                                    </span>
+                                    <span style="padding: 10px 10px; font-size: 18px;">
+                                        [[${item.itemPrice}]]
+                                    </span>
+                                    <span>
+                                        원
+                                    </span>
+                                </div>
+                                <div style="margin-top : 15px;">
+                                    <span>
+                                        수량 :
+                                    </span>
+                                    <!-- th:setTotalPrice(this, [[${item.itemPrice}]]) -->
+                                        <input type="hidden" th:value="${item.itemCode}" name="itemCode" class="itemCode">
+                                        <input type="hidden" th:value="${item.itemPrice}" name="itemPrice">
+                                        <input type="number" min="1" max="10" value="1" 
+                                            th:oninput="setTotalPrice(this, [[${item.itemPrice}]])" 
+                                            style="width: 120PX;" name="cartCnt" class="cartCnt">
+                                    <!-- [[${item.itemStock}]] -->
+                                </div>
+                                <div style="margin-top : 15px;">
+                                    <span>
+                                        총 구매가격 :
+                                    </span>
+                                    <span style="padding: 10px 10px; font-size: 18px;" class="total-price-span">
+                                        [[${item.itemPrice}]]
+                                    </span>
+                                    <span>
+                                        원
+                                    </span>
+                                </div>
+                                <div style="align-items: center; padding: 60px 0px;">
+                                    <button type="button" class="btn btn-primary" 
+                                            style="background-color: rgb(223, 168, 195); border: 1px solid rgb(223, 168, 195); width: 130px;"
+                                            th:onclick="insertCart([[${session.loginInfo}]], [[${item.itemCode}]])">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket3" viewBox="0 0 16 16">
+                                            <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM3.394 15l-1.48-6h-.97l1.525 6.426a.75.75 0 0 0 .729.574h9.606a.75.75 0 0 0 .73-.574L15.056 9h-.972l-1.479 6z"/>
+                                        </svg>
+                                        장바구니
+                                    </button> 
+                                    <button type="submit" class="btn btn-primary" 
+                                                        style="background-color: rgb(223, 168, 195); border: 1px solid rgb(223, 168, 195); width: 130px;">
+                                        바로구매
+                                    </button>
+                                </div>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+        </form>    
+        <div class="row" style="margin: 0 auto; margin-top: 40px;" >
+            <div class="col-4" 
+                style="font-size: 25px; padding: 10px 5px 5px 110px;">
+                <span style="padding: 10px 10px 10px 50px;">
+                    상품소개 
+                </span>
+            </div>
+            <div class="col-7" 
+                style="text-align: left; height:300px; 
+                        padding: 15px 20px;">
+                [[${item.itemIntro}]]
+            </div>
+        </div>
+
+        <div th:each="img:${item.imgList}">
+            <th:block th:if="${img.isMain == 'N'}">
+                <div class="row" style="margin-top: 30px; text-align: center;">
+                    <div class="col-4" style="padding: 10px 10px; font-size: 25px;">
+                        출판사 제공 <br>
+                        책소개
+                    </div>
+                    <div class="col-7">
+                    <img th:src="@{'/upload/'+ ${img.attachedFileName}}" alt="#" >
+                </div>
+                </div>
+            </th:block>
+        </div>
+    </div>
+
+</th:block>
+
+<th:block layout:fragment="content_js">
+    <!-- html 파일이 열릴때 같이 실행되는 js -->
+    <script src="/js/content/item/item_detail.js"></script>
+</th:block>
+</html>

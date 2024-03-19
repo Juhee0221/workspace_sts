@@ -1,0 +1,150 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    width: 100%;
+    vertical-align: top;
+}
+.wrap{
+    width: 1200px;
+    margin: 0 auto;
+}
+.header{
+    width: 1200px;
+    border: 1px solid #000;
+    display: flex;
+}
+.logo{
+    border: 1px solid #000;
+    width: 200px;
+    height: 100px;
+}
+
+/* nav */
+.nav{
+    border: 1px solid #000;
+    width: 1000px;
+    height: 100px;
+}
+.nav > ul {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    text-align: center;
+    margin-top: 50px;
+}
+.nav > ul > li{
+    position: relative;
+}
+.nav > ul > li > a{
+    display: inline-block;
+    padding: 10px 40px;
+    width: 80px;
+    font-weight: bold;
+    background-color: #a5b7e9;
+}
+.nav > ul > li > ul{
+    position: absolute;
+    width: 100%;
+    display: none;
+}
+.nav > ul > li > ul > li > a{
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
+    padding: 8px;
+    background-color: #ccc;
+}
+.slider{
+    width: 100%;
+    height: 300px;
+}
+.sliderWrap {
+    position: relative;
+}
+.sliderWrap > div {
+    display: none;
+}
+.sliderWrap> div:first-child{
+    display: block;
+}
+.slide{
+    position: absolute;
+
+}
+.slide span{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px 10px;
+    background: #a5b7e97e;
+    font-size: 23px;
+    font-weight: bold;
+    color: #fff;
+}
+.content{
+    display: flex;
+    width: 100%;
+}
+.content1{
+    width: 400px;
+    height: 200px;
+    border: 1px solid #ccc;
+}
+.tab-manu > ul {
+    display: flex;
+}
+.tab-manu > ul > li {
+    padding: 10px 10px;
+}
+.notice span {
+    display: block;
+    float: right;
+}
+.notice > ul > li {
+    padding: 8px;
+}
+.notice > ul > li > a:hover {
+    text-decoration: underline;
+}
+.banner{
+    width: 400px;
+    height: 200px;
+    background-image: url(img/);
+}
+
+.shortcut{
+    width: 400px;
+    height: 200px;
+}
+.footer{
+    display: flex;
+    width: 100%;
+}
+.footer1{
+    width: 100px;
+    height: 100px;
+}
+.footer2{
+    width: 1100px;
+    height: 100px;
+}
+.footer2-1{
+    width: 100%;
+    height: 50px;
+}
+.footer2-2{
+    width: 100%;
+    height: 50px;
+}

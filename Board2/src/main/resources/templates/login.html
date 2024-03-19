@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            margin: 0 auto;
+            width: 450px;
+            height: 500px;
+            background-color: rgba(228, 238, 181, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .logo{
+            font-size: 30px;
+            margin-bottom: 120px;
+        }
+        .table{
+            margin: 0 auto;
+        }
+        .btn{
+            margin-top: 150px;
+        }
+        .btn >input{
+            border: 1px ;
+            width: 120px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: #bff070;
+        }
+        .btn > input:hover{
+            background-color: #51ee21;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="logo">
+            <h3>LOGIN</h3>
+        </header>
+        <form action="/member/login" method="post">
+        <table class="table">
+            <tr class="t1">
+                <td>ID</td>
+                <td>
+                    <input type="text" name="memberId">
+                </td>
+            </tr>
+            <tr class="t2">
+                <td>PW</td>
+                <td>
+                    <input type="password" name="memberPw">
+                </td>
+            </tr>
+        </table>
+        <div class="btn">
+            <input type="button" value="게시글 보러가기" onclick="goBoardList()">
+            <input type="submit" value="로그인">
+            <input type="button" value="회원가입" onclick ="goJoin()">
+        </div>
+        </form>
+    </div>
+
+    <script>
+        function goJoin(){
+             location.href = '/member/join';
+        }
+        function goBoardList(){
+            location.href = '/board/list';
+        }
+
+    </script>
+</body>
+</html>

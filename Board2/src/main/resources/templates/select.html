@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    .container{
+        margin: 0 auto;
+        width: 600px;
+        height: 100vh;
+        background-color: rgba(228, 238, 181, 0.2);
+        text-align: center;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .table{
+        width: 100%;
+    }
+    .t1{
+        font-weight: bold;
+        color: #276e11;
+        height: 80px;
+        background-color: rgba(254, 255, 217, 0.5);
+    }
+    .t2{
+        height: 70px;
+        color: #103505;
+    }
+    .t3{
+        color: #103505;
+    }
+    .btn{
+    }
+    .btn2 >input{
+        border: 1px ;
+        width: 120px;
+        height: 50px;
+        margin-top: 25px;
+        border-radius: 10px;
+        background-color: #bff070;
+    }
+    .btn2 > input:hover{
+        background-color: #51ee21;
+        color: rgb(255, 255, 255);
+    }
+    .btn >input{
+        border: 1px ;
+        width: 120px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: #bff070;
+    }
+    .btn > input:hover{
+        background-color: #51ee21;
+        color: rgb(255, 255, 255);
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+                <tr class="t1">
+                    <td>글번호</td>
+                    <td>[[${board.boardNum}]]</td>
+                    <td>작성자</td>
+                    <td>[[${board.writer}]]</td>
+                    <td>작성일</td>
+                    <td>[[${board.createDate}]]</td>
+                </tr>
+                <tr class="t2">
+                    <td>제목</td>
+                    <td colspan="5">[[${board.title}]]</td>
+                </tr>
+                <tr class="t2">
+                    <td>내용</td>
+                    <td colspan="5">[[${board.content}]]</td>
+                </tr>
+            </table>
+         
+
+              <!-- 수정, 삭제 글 작성자이거나, 로그인한 사람이 관리자 일때만 -->
+              <th:block th:if="${session.loginInfo !=null}">
+                <th:block th:if="${session.loginInfo.memberId == board.writer 
+                                 or session.loginInfo.isAdmin == 'Y'}">
+                    <div class="btn">
+                        <input type="button" value="수정" th:onclick="goUpdate([[${board.boardNum}]])">
+                        <input type="button" value="삭제" th:onclick="goDelete([[${board.boardNum}]])">                                                        
+                    </div>
+                </th:block>
+            </th:block>
+            <div class="btn2">
+                <!--  history.back(-1)는 페이지이동, 실제로 홈페이지 뒤로가기 누르는것과 같음 -->
+                <!--  location.href = "원하는 홈페이지"와 같은 느낌으로 사용가능.  -->
+                <!--  history.back을 사용시 전페이지에 있던 정보가 남아있기때문에 
+                      되도록이면 데이터 조회 후 페이지를 띄어주는 location.href를 사용하는것이 좋음. -->
+                <input type="button" value="뒤로가기" onclick="history.back(-1)">
+                <input type="button" value="처음으로" onclick="goFirst()">
+            </div>
+
+            <!-- 댓글등록 -->
+            <th:block th:if="${session.loginInfo != null}">
+                <form action="/board/select" method="post">
+                    <div>
+                        COMMENT
+                        <input type="text" name="content">
+                        <input type="submit" value="댓글쓰기">
+                        <input type="hidden" name="boardNum" th:value="${board.boardNum}">
+                    </div>
+                </form>
+            </th:block>
+    
+            <!-- 댓글조회 -->
+            <th:block th:if="${#lists.isEmpty(commentList)}">
+                <tr>
+                    <td>
+                        조회된 댓글이 없습니다.
+                    </td>
+                </tr>
+            </th:block>
+            <th:block th:unless="${#lists.isEmpty(commentList)}">
+                    <tr th:each="comment : ${commentList}">
+                        <h4>[[${comment.commentWriter}]]</h4>
+                        <td>
+                            [[${comment.createDate}]]
+                        </td>
+                        <td>
+                            [[${comment.content}]]
+                        </td>
+                    </tr>
+            </th:block>
+    </div>
+
+    <script>
+        //변수 선언 
+        var a; //기존에 쓰던 변수 선언문법
+        var aa = 10;
+        var bb = 'java';
+
+        //추천하는 방식
+        const b = 10; //변하지 않는 값을 저장할때는 const 사용
+        // b = 20; 오류발생 
+
+        let c = 10; // 변하는 값을 저장할 때는 let 사용 
+        //c = 20;
+
+        const name = '홍'
+        const num1 = 10;
+        const num2 = 20;
+
+        console.log('안녕하세요~'); //자바스크립트 출력문
+        console.log(name + '이라는 사람은 국어점수가 ' + num1 + '영어점수가 ' + num2 + '입니다.' );
+        //빽틱
+        console.log(`${name}이라는 사람은 국어점수가 ${num1} 영어 점수가 ${num1}입니다.`)
+
+        function goFirst(){
+            location.href="/board/list"
+        }
+        function goUpdate(boardNum){
+            location.href="/board/update?boardNum=" + boardNum;
+        }
+        function goDelete(boardNum){
+            location.href="/board/delete?boardNum=" + boardNum;
+            // location.href=`/board/delete?boardNum=${boardNum}`;
+        }
+
+        // function goDelete(num){} -> (넘기고 싶은 데이터의 매개변수) 
+
+    </script>
+</body>
+</html>

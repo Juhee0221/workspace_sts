@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.container{
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+.table-div{
+	margin-top: 30px;
+}
+
+table{
+	width: 800px;
+	margin: 0 auto;
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+tr, td{
+	border: 1px solid black;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div><h3>문제 2번. 아래 입력한 행과 열을 갖는 표 생성</h3></div>
+		<div>
+			<div>행 - <input type="text" id="rowInput"></div>
+			<div>열 - <input type="text" id="colInput"></div>
+			<div><input type="button" value="표 생성" id="btn"></div>
+		</div>
+		<div class="table-div">
+			<span>이 곳에 테이블을 생성하세요.<br>
+			이 안내문구는 테이블 생성 시 제거 되어야 합니다.</span>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="/test2.js"></script>
+</body>
+</html>
+
+
+
+
+

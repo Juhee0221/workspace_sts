@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 해당 파일에 모든 쿼리문을 작성 -->
+<mapper namespace="carMapper">
+
+    <resultMap id="car" type="com.example.vmSystem.vo.CarVO">
+        <id column="MODEL_CODE"         property="modelCode"/>
+        <result column="MODEL_NAME"     property="modelName"/>
+        <result column="MODEL_MAKER"    property="modelMaker"/>
+        <result column="MODEL_PRICE"    property="modelPrice"/>
+    </resultMap>
+
+    <resultMap id="sal" type="com.example.vmSystem.vo.SaleVO">
+        <id column="SALE_CODE"            property="saleCode"/>
+        <result column="MODEL_BUYER"      property="modelBuyer"/>
+        <result column="BUYER_TEL"        property="buyerTel"/>
+        <result column="MODEL_COLOR"      property="modelColor"/>
+        <result column="SALE_DATE"        property="saleDate"/>
+        <result column="MODEL_CODE"       property="modelCode"/>
+        <association property="carVO" resultMap="car" />
+    </resultMap>
+
+    <insert id="insertCarInfo">
+        INSERT INTO CAR_INFO (
+            MODEL_NAME
+            , MODEL_PRICE
+            , MODEL_MAKER
+        ) VALUES (
+            #{modelName}
+            , #{modelPrice}
+            , #{modelMaker}
+        )
+    </insert>
+    <select id="selectCarInfo" resultMap="car">
+        SELECT MODEL_CODE
+            , MODEL_NAME
+            , MODEL_MAKER
+        FROM CAR_INFO
+    </select>
+
+    <select id="selectCar" resultMap="car">
+        SELECT MODEL_NAME
+            ,  MODEL_CODE
+        FROM CAR_INFO
+    </select>
+
+    <insert id="insertSal">
+        INSERT INTO SALES_INFO (
+            MODEL_BUYER
+            , MODEL_COLOR
+            , MODEL_CODE
+            , BUYER_TEL
+        ) VALUES (
+            #{modelBuyer}
+            , #{modelColor}
+            , #{modelCode}
+            , #{buyerTel}
+        )
+    </insert>
+
+    <select id="selectSar" resultMap="sal">
+        SELECT MODEL_BUYER
+            , BUYER_TEL
+            , SALE_DATE
+            , CAR.MODEL_CODE
+            , MODEL_COLOR
+            , MODEL_NAME
+            , MODEL_PRICE
+            , SALE_CODE
+        FROM SALES_INFO SAL INNER JOIN CAR_INFO CAR
+        ON SAL.MODEL_CODE = CAR.MODEL_CODE
+        ORDER BY SALE_DATE DESC
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

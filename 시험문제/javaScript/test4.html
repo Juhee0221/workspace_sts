@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+.container{
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+.layout-table{
+	width: 700px;
+	margin: 0 auto;
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.stu-list{
+	width: 350px;
+	margin: 0 auto;
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+tr, td{
+	border: 1px solid black;
+}
+
+.layout-table > tbody > tr{
+	height: 600px;
+}
+
+.result > div{
+	margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<table class="layout-table">
+		<tbody>
+			<tr>
+				<td>
+					<div style="margin-bottom: 6px;">
+						<input type="button" value="추가" onclick="addRow();">
+						<input type="button" value="결과 보기" onclick="setData();">
+					</div>
+					<div>
+						<table class="stu-list">
+							<thead>
+								<tr>
+									<td>이름</td>
+									<td>점수</td>
+								</tr>
+							</thead>
+							<tbody class="stu_score">
+								
+							</tbody>
+						</table>
+					</div>
+				</td>
+				<td>
+					<div class="result">
+						<div>
+							<div>총점</div> 
+							<div><input type="text" id="totalScore"></div> 
+						</div>
+						<div>
+							<div>1등 학생명</div>
+							<div><input type="text" id="firstName"></div>
+						</div>
+						<div>
+							<div>보충 학습 대상자</div>
+							<div><input type="text" id="names"></div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<script type="text/javascript" src="test4-1.js"></script>
+</body>
+</html>
+
+
+
+
+

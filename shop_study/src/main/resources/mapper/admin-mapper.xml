@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 해당 파일에 모든 쿼리문을 작성 -->
+<mapper namespace="adminMapper">
+
+    <!-- 다음에 INSERT 할 ITEM_CODE를 조회-->
+    <select id="selectNextItemCode" resultType="int">
+        SELECT IFNULL(MAX(ITEM_CODE), 0) +1 FROM shop_item
+    </select>
+
+
+    <!-- 상품 등록-->
+    <insert id="itemInsert">
+        INSERT INTO SHOP_ITEM (
+             ITEM_CODE
+            , ITEM_NAME
+            , ITEM_PRICE
+            , ITEM_INTRO
+            , CATE_CODE
+        ) VALUES (
+            #{itemCode}
+            , #{itemName}
+            , #{itemPrice}
+            , #{itemIntro}
+            , #{cateCode}
+        )
+    </insert>
+
+    <!-- 상품 이미지 정보 등록 -->
+    <insert id="insertImgs">
+        INSERT INTO ITEM_IMAGE (
+            ORIGIN_FILE_NAME
+            , ATTACHED_FILE_NAME
+            , IS_MAIN
+            , ITEM_CODE
+        ) VALUES
+
+        <!-- separator(구분자) : 반복문이 한번 실행 할때 " "안에 들어간 내용을 넣어줌-->
+        <!-- collection : 반복을 무엇으로 돌릴지 묻는것-->
+        <!-- item : 반복문을 돌려서 나온 걸 담는 변수-->
+        <foreach collection="imgList"  item="img" separator=",">
+            (
+                #{img.originFileName}
+                , #{img.attachedFileName}
+                , #{img.isMain}
+                , #{img.itemCode}
+            )
+        </foreach>
+
+    </insert>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

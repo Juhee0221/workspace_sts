@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    .container{
+        margin: 0 auto;
+        width: 600px;
+        height: 700px;
+        background-color: rgba(228, 238, 181, 0.2);
+        text-align: center;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .table{
+        width: 100%;
+    }
+    .logo{
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
+    .table{
+        margin: 0 auto;
+    }
+    .t1{
+        font-weight: bold;
+        color: #276e11;
+        height: 80px;
+    }
+    .btn{
+        margin-top: 95px;
+    }
+    .btn >input{
+        border: 1px ;
+        width: 120px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: #bff070;
+    }
+    .btn > input:hover{
+        background-color: #51ee21;
+        color: rgb(255, 255, 255);
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <header class="logo">
+            <h3>회원가입</h3>
+        </header>
+        <form action="/member/join" method="post">
+            <table class="table">
+                <tr class="t1">
+                    <td>아이디</td>
+                    <td>
+                        <input type="text" name="memberId">
+                    </td>
+                </tr>
+                <tr class="t1">    
+                    <td>비밀번호</td>
+                    <td>
+                        <input type="text" name="memberPw">
+                    </td>
+                </tr>
+                <tr class="t1">
+                    <td>이름</td>
+                    <td>
+                        <input type="text" name="memberName">
+                    </td>
+                </tr>
+                <tr class="t1">
+                    <td>성별</td>
+                    <td>
+                        <input type="radio" name="gender" value="남"> 남
+                        <input type="radio" name="gender" value="여"> 여
+                    </td>
+                </tr>
+                <tr class="t1">
+                    <td>이메일</td>
+                    <td><input type="text" name="memberEmail">
+                    </td>
+                </tr>
+            </table>
+            <div class="btn">
+                <input type="submit" value="회원가입">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

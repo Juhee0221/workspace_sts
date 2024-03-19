@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    .wrap{
+        margin: 0 auto;
+        border: 1px solid black;
+        width: 1000px;
+        height: 700px;
+        text-align: center;
+    }
+    .table{
+        border: 1px solid black;
+        width: 600px;
+        height: 500px;
+        border-collapse: collapse;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+    .t1{
+        width: 100%;
+        height: 60px;
+    }
+    .t1> td{
+        border: 1px solid black;
+    }
+    .t2{
+        width: 100%;
+        height: 60px;
+    }
+    .t2> td{
+        border: 1px solid black;
+    }
+    .t3{
+        width: 100%;
+        height: 60px;
+    }
+    .t3>td{
+        border: 1px solid black;
+    }
+    .t4{
+        width: 100%;
+        height: 60px;
+    }
+    .t4>td{
+        border: 1px solid black;
+    }
+    .t5>td{
+        border: 1px solid black;    
+    }
+    .input{
+        margin-top: 30px;
+    }
+</style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <h2>회원등록정보</h2>
+        </header>
+        <table class="table">
+            <tr class="t1">
+                <td>아이디</td>
+                <td>[[${member.id}]]</td>
+                <td>이름</td>
+                <td>[[${member.name}]]</td>
+            </tr>
+            <tr class="t2">
+                <td>연락처</td>
+                <td>
+                    <th:block th:each="each : ${member.tel}">
+                        [[${each}]]
+                    </th:block>
+                </td>
+                <td>이메일</td>
+                <td>[[${member.email}]]</td>
+            </tr>
+            <tr class="t3">
+                <td>생일</td>
+                <td colspan="3">[[${member.birthday}]]</td>
+            </tr>
+            <tr class="t4">
+                <td>관심레슨</td>
+                <td colspan="3">
+                    <th:block th:each="each : ${member.lesson}">
+                        [[${each}]]
+                    </th:block>
+                </td>
+            </tr>
+            <tr class="t5">
+                <td>자기소개</td>
+                <td colspan="3">[[${member.intro}]]</td>
+            </tr>
+        </table>
+        <div class="input">
+            <form action="goDetail" method="post">
+            <input type="submit" value="뒤로가기">
+            </form>
+            <input type="button" onclick="location.href='goDetail';">
+            <input type="button" onclick="history.back();">
+            
+            
+        </div>
+        
+    </div>
+</body>
+</html>

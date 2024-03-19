@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="headerFragment">
+    
+    <div class="row">
+        <!-- text-start : 왼쪽정렬 -->
+        <div class="col text-end">
+            <th:block th:if ="${session.loginInfo == null}">
+                <span class="pointer-span" onclick="login()">
+                    LOGIN
+                </span>
+                <span class="pointer-span" data-bs-toggle="modal" data-bs-target="#join-modal">
+                    JOIN
+                </span>
+            </th:block>
+            <th:block th:if="${session.loginInfo != null}">
+                <span>
+                    [[${session.loginInfo.memberId}]]님 반갑습니다.
+                </span>
+                    <span class="pointer-span" onclick="location.href='/cart/list'"> 장바구니 </span>
+                    <th:block th:if="${session.loginInfo.memberRoll == 'ADMIN'}">
+                        <span class="pointer-span" onclick="location.href='/admin/regItemForm';">
+                            관리자메뉴
+                        </span>
+                    </th:block>
+
+                <span class="pointer-span" onclick="logout()">
+                    LOGOUT
+                </span>
+            </th:block>
+            
+        </div>
+    </div>   
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="main-title">
+                BOOK SHOP
+            </h1>
+        </div>
+    </div>
+
+    <!-- 회원 가입 modal -->
+    <div class="modal fade" id="join-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        BOOK SHOP 회원가입
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form class="row g-3" action="/member/insertMember" method="post" id="join-form">
+
+                        <!-- ID -->
+                        <div class="col-10">
+                            <label for="" class="form-label">
+                                ID
+                            </label>
+                            <input type="text" class="form-control" name="memberId" id="memberId">
+                        </div>
+
+                        <!-- PW -->
+                        <div class="col-10">
+                            <label for="" class="form-label">
+                                PASSWORD
+                            </label>
+                            <input type="password" class="form-control" name="memberPw" id="memberPw">
+                        </div>
+
+                        <!-- CONFIRM PASSWORD -->
+                        <div class="col-10">
+                            <label for="" class="form-label">
+                                CONFIRM PASSWORD
+                            </label>
+                            <input type="password" class="form-control" id="conPw">
+                        </div>
+
+                        <!-- NAME -->
+                        <div class="col-10">
+                            <label for="" class="form-label">
+                                NAME
+                            </label>
+                            <input type="text" class="form-control" name="memberName">
+                        </div>
+
+                        <!-- TEL / SELECT  -->
+                        <div class="col-4">
+                            <label for="inputState" class="form-label">
+                                TEL
+                            </label>
+
+                            <select name="memberTel" class="form-select">
+                                <option selected value="010" >
+                                   010
+                                </option>
+                                <option value="011">
+                                    011
+                                </option>
+                            </select>
+                        </div>
+                        
+                        <!-- TEL(INPUT) / &nbsp; 띄어쓰기 -->
+                        <div class="col-4">
+                            <label for="" class="form-label">
+                                &nbsp;
+                            </label>
+                            <input type="text" class="form-control" name="memberTel">
+                        </div>
+                        <div class="col-4">
+                            <label for="" class="form-label">
+                                &nbsp; 
+                            </label>
+                            <input type="text" class="form-control" name="memberTel">
+                        </div>
+
+                        <!-- EMAIL -->
+                        <div class="col-3">
+                            <label for="" class="form-label">
+                                Email
+                            </label>
+                            <input type="text" class="form-control" name="memberEmail">
+                        </div>
+
+                        <div class="col-7">
+                            <label for="" class="form-label">
+                                &nbsp;
+                            </label>
+
+                            <select name="memberEmail" class="form-select">
+                                <option value="@naver.com" selected>
+                                   @naver.com
+                                </option>
+                                <option value="@gmail.com">
+                                    @gmail.com
+                                </option>
+                            </select>
+                        </div>
+
+                        <!-- HOPE -->
+                        <div class="col-9">
+                            <label for="" class="form-label">
+                                주소
+                            </label>
+                            <input type="text" class="form-control" name="postCode" id="postcode" readonly>
+                        </div>
+
+                        <!-- d-grid 지정된 영역 꽉채우기 -->
+                        <div class="col-3 d-grid">
+                            <label for="" class="form-label">
+                                &nbsp;
+                            </label>
+                            <button type="button" class="btn btn-primary" onclick="searchAddress()"> 
+                                검색
+                            </button>
+                        </div>
+                        <div class="col-11">
+                            <input type="text" class="form-control" name="memberAddr" id="memberAddr" readonly>
+                        </div>
+                        <div class="col-11">
+                            <input type="text" class="form-control" name="addrDetail">
+                        </div>
+
+                        <!-- GENDER -->
+                        <div class="col-8">
+                            <label for="" class="form-label">
+                                GENDER
+                            </label>
+                        </div>
+                        
+                        <div class="col-5">
+                            <span class="form-check">
+                                <input class="form-check-input" type="radio" name="gender" id="" checked value="male">
+                                <label class="form-check-label" for="">
+                                    MALE
+                                </label>
+                            </span>    
+                        </div>
+                        <div class="col-5">
+                            <span class="form-check">
+                                <input class="form-check-input" type="radio" name="gender" id="" value="female" >
+                                <label class="form-check-label" for="">
+                                    FEMALE
+                                </label>
+                            </sapn> 
+                        </div>
+                    </form>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="join()">
+                            JOIN
+                        </button>   
+
+                        <!-- <input type="button .... onclick="join()" -->
+                    </div>
+                </div>
+
+                <!-- 팝업창 닫기 -->
+            </div>
+        </div>
+    </div>  
+    
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="/js/fragment/user_header.js"></script>
+</th:block>
+</html>

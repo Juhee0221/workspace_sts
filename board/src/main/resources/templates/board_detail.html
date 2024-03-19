@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+     .container{
+        width: 600px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    table{
+        border: 3px solid #fff;
+        width: 100%;
+        height: 150px;
+        border-collapse: collapse ;
+        font-weight: bold;
+    }
+    .t2 {
+        background-color: #a9dcfd;
+        color: #1328e4;
+        font-weight: bold;
+    }
+    tr, td {
+        border: 3px solid #fff;
+        
+    }
+    .t3{
+        background-color: #cde5ee;
+        color: rgb(52, 32, 124);
+    }
+    .t4{
+        background-color: #a9dcfd;
+        color: rgb(52, 32, 124);
+    }
+    .t5{
+        background-color: #cde5ee;
+        color: rgb(52, 32, 124);
+    }
+    .t6{
+        height: 150px;
+        background-color: #a9dcfd;
+        color: rgb(52, 32, 124);
+    }
+    .btn > input{
+        width: 85px;
+        height: 50px;
+        margin-top: 25px;
+        border: 1px;
+        border-radius: 45px;
+        background-color: #cde5ee;
+        color: rgb(52, 32, 124);
+    }
+    .btn > input:hover{
+        background-color: #8aaef0;
+        color: white
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <table class="t1">
+                <tr class="t2">
+                    <td>글번호</td>
+                    <td>[[${boardInfo.boardNum}]]</td>
+                    <td>작성자</td>
+                    <td>[[${boardInfo.whiter}]]</td>
+                    <td>작성일</td>
+                    <td colspan="5">[[${boardInfo.createDate}]]</td>
+                </tr>    
+                <tr class="t3">
+                    <td>제목</td>
+                    <td colspan="5">[[${boardInfo.boardTitle}]]</td>
+                </tr>
+                <tr class="t4">
+                    <td>내용</td>
+                    <td colspan="5">[[${boardInfo.boardContent}]]</td>
+                </tr>
+            </table>
+        </div>
+        <div class="btn">
+            <input type="button" value="뒤로가기" onclick="history.back();">
+            <input type="button" value="수정" th:onclick="|location.href='@{boardUpdate(boardNum=${boardInfo.boardNum})}'|">
+            <input type="button" value="삭제" th:onclick="|location.href='@{boardDelete(boardNo=${boardInfo.boardNum})}'|">
+        </div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title></title>
+    <!-- html 파일이 열릴때 같이 실행되는 css -->
+    <link rel="stylesheet" href="/css/main.css">
+    <th:block layout:fragment="content_css">
+        
+    </th:block>
+</head>
+<body>
+        <!-- html 코드 작성 -->
+        <div class="container">
+            <div class="header">
+                <th:block th:replace="~{fragment/mainHeader::headerFragment}"></th:block>
+            </div>
+            
+            <div class="contents">
+                <th:block layout:fragment="contentFragment"></th:block>
+            </div>
+        </div>
+    <th:block layout:fragment="content_js"></th:block>
+</body>
+</html>
+
+
+

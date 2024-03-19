@@ -1,0 +1,38 @@
+.selectCarContainer h3{
+    font-size: 23px;
+    margin-left: 380px;
+    margin-top: 30px;
+}
+
+.selectCarMain {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.selectCarMain table {
+    margin-top: 50px;
+    text-align: center;
+    width: 800px;
+    border-collapse: collapse;
+}
+.selectCarMain table thead{
+    padding: 10px;
+}
+.selectCarMain table thead td {
+    border: 1px solid #ccc;
+}
+.selectCarMain table thead tr td {
+    height: 20px;
+    padding: 10px 10px;
+}
+.selectCarMain table tbody td {
+    border: 1px solid #ccc;
+}
+.selectCarMain table tbody tr td{
+    height: 10px;
+    padding: 10px 10px;
+}
+.selectCarMain table tbody tr td:hover{
+    cursor: pointer;
+}

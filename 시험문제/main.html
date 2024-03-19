@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쇼핑몰</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+            color: #8a8a8a;
+            font-size: 10.5pt;
+        }
+        li{
+            list-style: none;
+        }
+        #wrap{
+            width: 100%;
+        }
+        /* header CSS */
+        .header{
+            width: 100%;
+            height: 40px;
+            background-color: #272525;
+            color: #fff;
+            display: flex;;
+        }
+        .logo{
+           padding: 3px 4px;
+           display: flex;
+           margin-left: 250px;
+        }
+        .logoText{
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .logoText2{
+            font-size: 26px;
+            font-weight: lighter;
+        }
+        .logoInput{
+            margin-left: 13px;
+            margin-top: 4px;
+        }
+        .logoInput > input{
+            width: 240px;
+            height: 27px;
+        }
+        .short{
+            padding: 10px 10px;
+            font-size: 13px;
+            margin-left: 440px;
+        }
+        .menu{
+            width: 100%;
+            height: 40px;
+            background-color: #f7f7f7;
+        }
+        .menu > ul {
+            margin: 0 auto;
+            display: flex;
+        }
+        .menu > ul > li {
+            margin-left: 25px;
+            margin-top: 7px;
+            position: relative;
+        }
+
+        .menu > ul > li > a:hover {
+            color: #000;
+        }
+        /* .memu > ul > li > a:hover .submenu{
+            display: block;
+
+        } */
+        .menu > ul > li > ul{
+            display: none;
+            width: 120px;
+            position: absolute;
+            left: 0;
+            top: 34px;
+            text-align: left;
+            background-color: #fff;
+            padding: 0;
+        }
+        .menu > ul > li > ul > li{
+           padding: 10px 20px;
+        }
+        .menu > ul > li > ul > li > a {
+            display: inline-block;
+            font-size: 11px;
+        }
+        .menu > ul > li > ul > li > a:hover{
+            color: #000;
+            font-size: 11px;
+        }
+
+        /* 자바스트립트용 CSS */
+        .menu > ul > li > ul{
+            display: block;
+            height: 0px;
+            overflow: hidden;
+            /* 슬라이드 메뉴 내려오는 속도지정 */
+            transition: all 600ms;
+        }
+        .img{
+            width: 100%;
+            height: 850px;
+            background-image: url(/img/img.PNG);
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }   
+    </style>
+</head>
+<body>
+    <div id="wrap">
+
+        <!-- header -->
+        <header class="header">
+
+            <!-- logo -->
+            <div class="logo">
+                <span class="logoText">STYLE</span>
+                <span class="logoText2">MAN</span>
+                <div class="logoInput">
+                    <input type="search">
+                </div>
+            </div>
+
+            <!-- short -->
+            <div class="short">
+                <span>즐겨찾기 |</span>
+                <span>로그인 |</span>
+                <span>
+                    <a href="join.html" style="color: #fff;">
+                        회원가입 |</span>
+                    </a>
+                <span>장바구니 |</span>
+                <span>주문조회 |</span>
+                <span>고객센터</span>
+            </div>
+        </header>
+        <!-- header 끝 -->
+
+        <div class="menu">
+            <ul>
+                <li>
+                    <a href="#" style="color: #460e86; font-weight: normal; margin-left: 290px;">
+                        BEST
+                    </a>
+                </li>
+                <li>
+                    <a href="#"  style="color: #45157c; font-weight: normal;">
+                        NEW 5%
+                    </a>
+                </li>
+                <li><a href="#">OUTER</a></li>
+                <li><a href="#">SUIT</a></li>
+                <li><a href="#">TEE/TOP</a></li>
+                <li class="slide">
+                    <a href="#">PANTS</a>
+                    <!-- 앱솔루트 -->
+                    <ul class="submenu">
+                        <li><a href="#">슬랙스</a></li>
+                        <li><a href="#">면바지</a></li>
+                        <li><a href="#">밴딩 / 스판팬츠</a></li>
+                        <li><a href="#">청바지 / 데님</a></li>
+                        <li><a href="#">데미지진</a></li>
+                        <li><a href="#">기모팬츠</a></li>
+                        <li><a href="#">트레이닝</a></li>
+                        <li><a href="#">반바지</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">SHIRTS</a>
+                    <ul class="submenu">
+                        <li><a href="#">옥스퍼드</a></li>
+                        <li><a href="#">데님셔츠</a></li>
+                        <li><a href="#">린넨셔츠</a></li>
+                        <li><a href="#">플라넬셔츠</a></li>
+                        <li><a href="#">겨울전용</a></li>
+                        <li><a href="#">빅사이즈</a></li>
+                        <li><a href="#">파스텔</a></li>
+                        <li><a href="#">워셔블</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" style="color: #51c447;">
+                        1+1
+                    </a>
+                </li>
+                <li>
+                    <a href="#">KNIT / CARDIGAN</a>
+                </li>
+                <li><a href="#">SHOES</a></li>
+                <li><a href="#">BAG</a></li>
+                <li><a href="#">ACC</a></li>
+                <li>
+                    <a href="#" style="color: #45157c; font-weight: normal;">
+                        BIG SIZE
+                    </a>
+                </li>
+                <li><a href="#">OUTLET</a></li>
+            </ul>
+        </div>
+         <!-- MENU 끝 -->
+ 
+         <div class="img">
+ 
+         </div>
+    </div>
+    <script>
+
+    </script>
+    <script>
+        // document.addEventListener()
+
+        //웹페이지를 로딩했을때 
+        window.onload = function(){
+            
+            //이벤트를 실행 할 태그를 변수에 지정
+            // doucument : 실행할 태그 선택
+            //메뉴가 여러개일때는 querySelectorAll 사용!
+            const navList = document.querySelectorAll(".menu > ul > li");
+            const submenu = document.querySelector(".submenu")
+            //console.log(navList)
+
+            //mouseover 했을때 실행
+            // navList.addEventListener("mouseover", function(){
+            //     submenu.classList.add('on');
+            // })
+            //mouseout 하면 remove
+            // navList.addEventListener("mouseout", function(){
+            //     submenu.classList.remove('on');
+            // })
+
+            //메뉴가 여러개일때는  foEach(반복문) 사용
+            // navList.forEach(function(navItem){
+                //마우스 오버 했을때 이벤트 실행
+                navList.forEach(function(navItem){
+                    navItem.addEventListener("mouseover", function(){
+                    // 마우스 오버 했을 때 submenu sytyle.height 값을 설정
+                    this.querySelector(".submenu").style.height = "350px";
+                });
+
+                    navItem.addEventListener("mouseout", function(){
+                        // 마우스 아웃했을 때 submenu sytyle.height 값을 설정
+                        this.querySelector(".submenu").style.height = "0px";
+                    });
+                })
+                
+
+            // });
+        }
+    </script>
+</body>
+</html>
+    
+    </div>
+</body>
+</html>

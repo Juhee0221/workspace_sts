@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../javascript연습용"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "시험문제"
+	}
+}

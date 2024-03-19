@@ -1,0 +1,89 @@
+/* *{
+    border: 1px solid black;
+} */
+.insertCarMain{
+    margin: 0 auto;
+    width: 1200px;
+}
+.insertBody{
+    width: 1200px;
+    border-bottom: 1px solid #ccc;
+}
+.insertBody h2 {
+    margin-top: 30px;
+    margin-left: 150px;
+}
+.insertCarInput{
+    margin-left: 150px;
+    margin-top: 20px;
+    text-align: center;
+}
+.insertCarInput span {
+    display: inline-block;
+    margin-right: 40px;
+    font-size: 18px;
+}
+.insertCarInput span select {
+    width: 80px;
+    height: 30px;
+}
+.insertCarInput span input {
+    width: 200px;
+    height: 25px;
+    border: 1px solid #ccc;
+}
+.insertCarBtn {
+    margin-left: 150px;
+    margin-top: 20px;
+    text-align: right;
+}
+.insertCarBtn input{
+    border: none;
+    width: 90px;
+    height: 35px;
+    border-radius: 10px;
+    background-color: rgba(216, 216, 216, 0.664);
+    font-weight: bolder;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.insertCarBtn input:hover {
+    background-color: #000000;
+    color: #fff;
+}
+.insertFooter {
+    margin: 0 auto;
+    width: 1200px;
+}
+.insertFooter h2 {
+    margin-top: 30px;
+    margin-left: 150px;
+}
+.selectTable {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 600px;
+    height: 700px;
+}
+.selectTable table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+.selectTable table thead {
+    width: 100%;
+    font-size: 20px;
+    height: 75px;
+}
+.thead > tr > td{
+    border-bottom: 1px solid #ccc;
+}
+.selectTable tbody tr {
+    border-bottom: 1px solid #ccc;
+}
+.selectTable tbody tr td {
+    padding: 20px 20px;
+}
+.select-bar{
+    border: solid 1px #ccc;
+}
