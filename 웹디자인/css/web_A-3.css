@@ -35,13 +35,14 @@ img{
     border: 1px solid #000;
     width: 1000px;
     height: 100px;
+    z-index: 1000;
 }
 .nav > ul {
     width: 100%;
     display: flex;
     justify-content: right;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 35px;
 }
 .nav > ul > li{
     position: relative;
@@ -80,7 +81,6 @@ img{
 }
 .slide{
     position: absolute;
-
 }
 .slide span{
     position: absolute;
@@ -102,14 +102,20 @@ img{
     height: 200px;
     border: 1px solid #ccc;
 }
-.tab-manu > ul {
+.tab-manu{
     display: flex;
 }
-.tab-manu > ul > li {
+.tab-manu a {
     padding: 10px 10px;
 }
-.notice span {
+.tab-manu a.active {
+    text-decoration: underline;
+}
+.notice {
     display: block;
+}
+.notice span {
+    /* display: block; */
     float: right;
 }
 .notice > ul > li {
@@ -118,15 +124,55 @@ img{
 .notice > ul > li > a:hover {
     text-decoration: underline;
 }
-.banner{
-    width: 400px;
-    height: 200px;
-    background-image: url(img/);
+.gallery > ul {
+    display: flex;
+    justify-content: space-between;
 }
-
-.shortcut{
+.gallery > ul > li {
+    padding: 15px;
+}
+.gallery img {
+    width: 100px;
+    height: 100px;
+}
+.banner{
+    text-align: center;
     width: 400px;
     height: 200px;
+    background-image: url(../img/강원천문대1.gif);
+}
+.banner h3{
+    color: #dac1ac;
+    padding: 10px;
+    margin-top: 40px;
+}
+.banner button {
+    margin-top: 15px;
+    width: 100px;
+    height: 40px;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.shortcut{
+    text-align: center;
+    width: 400px;
+    height: 200px;
+    background-image: url(../img/강원천문대3.gif);
+}
+.shortcut h3{
+    color: #f6f6f8;
+    padding: 10px;
+    margin-top: 40px;
+}
+.shortcut button {
+    margin-top: 15px;
+    width: 100px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    font-weight: bold;
 }
 .footer{
     display: flex;
