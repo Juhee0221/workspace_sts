@@ -83,7 +83,7 @@ public class AdminController {
             img.setItemCode(itemCode);
         }
         //모든 정보를 다 들고 가야 되기 때문에 list에 그 값을 더 해줌.
-        imgList.add (mainImgVO);
+        imgList.add(mainImgVO);
 
         //itemVO가 정보값을 들고간 후 저장하는 역할
         itemVO.setImgList(imgList);

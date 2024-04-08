@@ -43,25 +43,26 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         //인증 및 인가 설정이 다 들어옴
                         c -> {
+                            c.anyRequest().permitAll();
                             //1. 인증처리
                             //permitAll : requestMatchers()에 요청 경로에 대한 것을 다 승인 : 인증 X(로그인)
-                            c.requestMatchers(
-                                        //로그인 안해도 들어올 수 있는 페이지
-                                        // CSS , IMG , JAVASCRIPT 도 보여지지 않기 때문에
-                                        // security(인증)에서 제외 시켜줘야됨
-                                        new AntPathRequestMatcher("/"),
-                                        new AntPathRequestMatcher("/item/list"),
-                                        new AntPathRequestMatcher("/member/loginForm"),
-                                        new AntPathRequestMatcher("/member/join"),
-                                        new AntPathRequestMatcher("/member/login")
-                                    ).permitAll()
-                                    //hasRole : 어떤 권한이 있어야 경로를 들어갈 수 있음(인가에 대한 설정)
-                                    .requestMatchers(
-                                            // /admin/** : ADMIN과 관련된 모든 페이지.
-                                            new AntPathRequestMatcher("/admin/**")
-
-                                    ).hasRole("ADMIN")
-                                    .anyRequest().authenticated();
+//                            c.requestMatchers(
+//                                        //로그인 안해도 들어올 수 있는 페이지
+//                                        // CSS , IMG , JAVASCRIPT 도 보여지지 않기 때문에
+//                                        // security(인증)에서 제외 시켜줘야됨
+//                                        new AntPathRequestMatcher("/"),
+//                                        new AntPathRequestMatcher("/item/list"),
+//                                        new AntPathRequestMatcher("/member/loginForm"),
+//                                        new AntPathRequestMatcher("/member/join"),
+//                                        new AntPathRequestMatcher("/member/login")
+//                                    ).permitAll()
+//                                    //hasRole : 어떤 권한이 있어야 경로를 들어갈 수 있음(인가에 대한 설정)
+//                                    .requestMatchers(
+//                                            // /admin/** : ADMIN과 관련된 모든 페이지.
+//                                            new AntPathRequestMatcher("/admin/**")
+//
+//                                    ).hasRole("ADMIN")
+//                                    .anyRequest().authenticated();
                         }
                 )
                 .formLogin(
