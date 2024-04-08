@@ -18,6 +18,7 @@ public class PageVO {
         displayPageCnt = 5;
     }
 
+
     public void setPageInfo(){
         //화면에 보이는 마지막 페이지 번호 세팅
         //displayPageCnt, nowPage
