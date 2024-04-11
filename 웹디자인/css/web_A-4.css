@@ -1,0 +1,289 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+li{
+    list-style: none;
+}
+img{
+    vertical-align: top;
+    width: 100%;
+}
+.wrap{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.header{
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+.header::after{
+    left: 0;
+    top: 100px;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0px;
+    z-index: 1;
+    background-color: #000;
+    transition: all 400ms;
+}
+.header.on::after{
+    height: 150px;
+}
+.logo{
+    width: 200px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo h3 {
+    padding: 10px;
+}
+
+.nav{
+    width: 100%;
+    height: 100px;
+    z-index: 1000;
+}
+.nav > ul {
+    display: flex;
+    justify-content: right;
+    margin-top: 57px;
+    text-align: center;
+}
+.nav > ul > li{
+    border: 1px solid #ccc;
+    position: relative;
+}
+.nav > ul >li > a{
+    display: inline-block;
+    padding: 10px 40px;
+}
+.nav > ul >li > a:hover{
+    background-color: #ccc;
+    font-weight: bold;
+}
+.nav > ul > li > ul{
+    position: absolute;
+    width: 100%;
+    display: none;
+}
+.nav > ul >li > ul > li > a{
+    background-color: #000;
+    color: #fff;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px;
+}
+.nav > ul > li > ul > li > a:hover{
+    text-decoration: underline;
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+}
+/* header 끝 */
+
+.slider{
+    width: 100%;
+    height: 300px;
+}
+.sliderWrap{
+    position: relative;
+}
+.sliderWrap > div {
+    display: none;
+}
+.sliderWrap >div:first-child{
+    display: block;
+}
+
+.slide {
+    position: absolute;
+}
+.slide span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px;
+    background-color: #fff;
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
+}
+/* slider 끝 */
+
+.contents{
+    display: flex;
+    width: 100%;
+}
+.notice{
+    width: 400px;
+    height: 200px;
+}
+.notice h3 {
+    padding: 10px;
+}
+.notice > ul {
+    margin-top: 12px;
+    font-size: 19px;
+}
+.notice > ul > li {
+    padding: 4px;
+}
+.notice > ul > li > a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.notice span {
+    float: right;
+}
+/* notice 끝 */
+
+.gallery{
+    width: 400px;
+    height: 200px;
+}
+.gallery h3 {
+    padding: 10px;
+}
+.img {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img img {
+    padding: 10px;
+    width: 105px;
+    height: 80px;
+}
+.img img:hover{
+    opacity: 50%;
+}
+
+.shortcut{
+    width: 400px;
+    height: 200px;
+    text-align: center;
+    background-image: url(../img/강원천문대3.gif);
+}
+.shortcut h3 {
+    color: #fff;
+    font-size: 25px;
+    padding: 10px;
+    margin-top: 40px;
+}
+.shortcut button{
+    margin-top: 25px;
+    width: 80px;
+    height: 50px;
+    border: 1px solid #000;
+    border-radius: 25px;
+    color: #fff;
+    background-color: #302f2f;
+}
+.shortcut button:hover{
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+}
+/* contents 끝 */
+
+.footer{
+    display: flex;
+    width: 100%;
+    background-color: #ccc;
+}
+.footer1 {
+    width: 1000px;
+}
+.footer1-1{
+    width: 100%;
+    height: 50px;
+}
+.footer1-1 > ul {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+    
+}
+.footer1-1 > ul > li {
+    border-right: 1px solid #000;
+}
+.footer1-1 li:last-child{
+    border: none;
+}
+.footer1-1 > ul > li > a{
+    padding: 10px;
+    font-size: 15px;
+    color: #000
+}
+.footer1-2{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+.footer1-2 a {
+    margin-top: 15px;
+    padding: 10px;
+}
+.footer2 {
+    width: 200px;
+    height: 100px;
+    text-align: center;
+}
+.footer2 select {
+    margin-top: 30px;
+    width: 150px;
+    height: 30px;
+}
+.popup{
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    width: 450px;
+    height: 300px;
+    background-color: #fff;
+    border: 5px solid #000;
+    text-align: center;
+}
+.popup h3 {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.popup p {
+    padding: 10px;
+}
+.popup button {
+    margin-top: 20px;
+    width: 80px;
+    height: 30px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 25px;
+    border: 1px solid #000;
+}
+.popup button:hover{
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
+}
