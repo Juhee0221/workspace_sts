@@ -30,8 +30,8 @@ def hello():
 
 #seconds=60*3 반복되는 시간(초)
 #hours=2 2시간 마다
-@scheduler.task('interval', id='scheduler_1', hours=1, misfire_grace_time=None)
-# @scheduler.task('interval', id='scheduler_1', seconds=60, misfire_grace_time=None)
+# @scheduler.task('interval', id='scheduler_1', hours=1, misfire_grace_time=None)
+@scheduler.task('interval', id='scheduler_1', seconds=60, misfire_grace_time=None)
 def scheduler_1():
     get_API_Data()
 
@@ -46,27 +46,8 @@ def aaa():
 
     from datetime import datetime
 
-    my_filter = team_df['데이터 시간'].str.slice(start=0, stop=13) == datetime.today().strftime("%Y-%m-%d %H")
+    my_filter = team_df['데이터 시간'].str.slice(start=0, stop=10) == datetime.today().strftime("%Y-%m-%d")
     new_df = team_df[my_filter]
-
-    test_df = new_df.groupby('시리얼번호').count()
-
-    dupleList = []
-    for i, row in test_df.iterrows():
-        if row['데이터 시간'] > 1 :
-            dupleList.append(row.name)
-            print(row.name)
-
-    remove_index_list = []
-    for sNum in dupleList:
-        max_date = max(new_df.loc[new_df['시리얼번호'] == sNum].head(1)['데이터 시간'].values[0], new_df.loc[new_df['시리얼번호'] == sNum].tail(1)['데이터 시간'].values[0])
-        remove_index = new_df.loc[(new_df['시리얼번호'] == sNum) & (new_df['데이터 시간'] == max_date)].index[0]
-        remove_index_list.append(remove_index)
-
-    new_df.drop(index=remove_index_list, axis=0, inplace=True)
-
-    new_df.isnull().sum()
-    new_df.index = range(len(new_df))
     new_df
 
     # idxList = []
@@ -78,6 +59,10 @@ def aaa():
     # idxList
 
     # team_df.drop(index=idxList, inplace=True)
+
+    new_df.isnull().sum()
+
+    new_df.index = range(len(new_df))
 # 지선영 #
     new_df.loc[(pd.to_numeric(new_df['소음(dB)']) >= 0), '소음 등급'] = '매우좋음'
     new_df.loc[(pd.to_numeric(new_df['소음(dB)']) > 30) & (pd.to_numeric(new_df['소음(dB)']) <= 40), '소음 등급'] = '좋음'
